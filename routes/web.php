@@ -28,7 +28,7 @@ Route::middleware(['web'])->group(function () {
 
 // Admin Routes
 Route::middleware(['web'])->group(function () {
-    Route::prefix('admin')->group(function (){
+    Route::prefix('admin')->group(function () {
         Route::get('/', 'Admin\\AdminController@index')->name('admin');
 
         Route::get('login', 'Admin\\AuthController@index')->name('admin.login');

@@ -76,12 +76,8 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        // $usuario = User::findOrFail($id);
-
-        // return view('admin.usuario.edit', compact('usuario'));
-
         $usuario = User::where('id', $id)->first();
-dump($usuario);
+
         return view('admin.usuario.edit', [
             'id' =>  $usuario->id,
             'username' =>  $usuario->username,
@@ -130,18 +126,4 @@ dump($usuario);
 
         return redirect('admin/users');
     }
-
-    /**
-     * Enable/Disable the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function status($id)
-    {
-        $usuario = User::find($id);
-
-        return view('admin.usuario.index');
-    }
-
 }
