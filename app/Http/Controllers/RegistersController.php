@@ -28,7 +28,10 @@ class RegistersController extends Controller
         {
             $registros = User::select('users.*', 'registers.*')
                             ->leftJoin('registers', 'users.id', '=', 'registers.user_id')
-                            ->where('username', $username)->get();
+                            ->where('username', $username)
+                            ->where('registers.created_at', '>', '2022-10-10 00:00:00')
+                            ->whereIn('registers.type', ['rfid', 'code'])
+                            ->orderBy('registers.created_at', 'desc')->get();
 
             return view('registros.index', compact('registros'));
         }
